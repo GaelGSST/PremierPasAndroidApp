@@ -19,8 +19,38 @@ fun ApplicationNavHost(
     NavHost(
         navController = navController,
         startDestination = ApplicationNavigationPath.Home,
-        enterTransition = { fadeIn(animationSpec = tween(700)) },
-        exitTransition = { fadeOut(animationSpec = tween(700)) },
+        enterTransition = {
+            fadeIn(
+                animationSpec = tween(300)
+            ) + androidx.compose.animation.slideInHorizontally(
+                initialOffsetX = { fullWidth -> fullWidth },
+                animationSpec = tween(300)
+            )
+        },
+        exitTransition = {
+            fadeOut(
+                animationSpec = tween(300)
+            ) + androidx.compose.animation.slideOutHorizontally(
+                targetOffsetX = { fullWidth -> -fullWidth / 4 },
+                animationSpec = tween(300)
+            )
+        },
+        popEnterTransition = {
+            fadeIn(
+                animationSpec = tween(300)
+            ) + androidx.compose.animation.slideInHorizontally(
+                initialOffsetX = { fullWidth -> -fullWidth / 4 },
+                animationSpec = tween(300)
+            )
+        },
+        popExitTransition = {
+            fadeOut(
+                animationSpec = tween(300)
+            ) + androidx.compose.animation.slideOutHorizontally(
+                targetOffsetX = { fullWidth -> fullWidth },
+                animationSpec = tween(300)
+            )
+        }
     ) {
         composable<ApplicationNavigationPath.Home> {
             MainScreen(
