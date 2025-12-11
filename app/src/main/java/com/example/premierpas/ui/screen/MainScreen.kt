@@ -138,6 +138,20 @@ fun MainScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
+                    Text(
+                        text = "Killian LEFRANÇOIS",
+                        style = MaterialTheme.typography.titleLarge,
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
+                    Text(
+                        text = "Florent DUBUT",
+                        style = MaterialTheme.typography.titleLarge,
+                        textAlign = TextAlign.Center,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+
                     Spacer(modifier = Modifier.height(8.dp))
 
                     // Modern Button with icon
