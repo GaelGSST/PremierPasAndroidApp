@@ -23,3 +23,4 @@ login.properties
 
 #kotlin K2 files : https://kotlinlang.org/docs/whatsnew-eap.html#new-directory-for-kotlin-data-in-gradle-projects
 .kotlin
+app/google-services.json

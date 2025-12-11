@@ -39,6 +39,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import firebase.RemoteConfigManager
 import kotlinx.coroutines.delay
 
 @Composable
@@ -46,10 +47,17 @@ fun MainScreen(
     onButtonClick: () -> Unit
 ) {
     var isVisible by remember { mutableStateOf(false) }
-    
+    var testValue by remember { mutableStateOf(RemoteConfigManager.getTestValue()) }
+
     LaunchedEffect(Unit) {
         delay(100)
         isVisible = true
+
+        RemoteConfigManager.fetchAndActivate { isSuccess ->
+            if (isSuccess) {
+                testValue = RemoteConfigManager.getTestValue()
+            }
+        }
     }
 
     val scale by animateFloatAsState(
@@ -165,6 +173,28 @@ fun MainScreen(
                                 .padding(start = 8.dp)
                                 .size(20.dp)
                         )
+                    }
+
+                    if(testValue) {
+                        Button(
+                            onClick = { onButtonClick() },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(56.dp),
+                            shape = MaterialTheme.shapes.large,
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = MaterialTheme.colorScheme.tertiary
+                            ),
+                            elevation = ButtonDefaults.buttonElevation(
+                                defaultElevation = 4.dp,
+                                pressedElevation = 8.dp
+                            )
+                        ) {
+                            Text(
+                                text = "Bouton pour les Anglais",
+                                style = MaterialTheme.typography.labelLarge
+                            )
+                        }
                     }
                 }
             }
