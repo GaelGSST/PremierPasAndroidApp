@@ -1,0 +1,94 @@
+Projet - Android Cloud 2025
+Objectifs
+-
+-
+-
+-
+Mettre en pratique les connaissances acquises.
+Pratiquer et se confronter aux enjeux du développement mobile.
+Démontrer votre capacité à proposer une architecture propre.
+Vous donner un aperçu du développement mobile en entreprise.
+Pré requis de l’application
+-
+-
+-
+-
+Le minimum SDK doit-être au moins : Api 26 (Android 0).
+Le compile SDK doit-être : Api 35| 36.
+Respecter l'architecture vu en cours Ui /data
+Une seule activity sera nécessaire, chaque partie aura son propre écran
+en compose et la navigation associée.
+Facteur de variation de la note
+-
+-
+-
+-
+Plus vous nommerez vos classes, vos composants de manière pertinente, plus
+vous aurez de points bonus.
+Respectez bien les principes Kiss et Dry
+Une bonne gestion du découpage de votre code / dossier vous fera gagner des
+points bonus. (Ui/Data/Architecture)
+Pour la partie UI, plus vos screen seront lisible, et utilisent des petits
+composants, plus vous aurez de points.
+Rappel
+●
+Fonctionnalité 1 : Homepage
+Implémenter un screen compose contenant
+○
+les informations des personnes du groupe (Nom, prénom)
+○
+Rediriger vers la fonctionnalité 2 du sujet
+○
+Rediriger vers la fonctionnalité 3 du sujet.
+●
+●
+●
+●
+●
+●
+●
+●
+Fonctionnalité 2 : Liste via API
+Choisir 1 api que vous souhaitez manipuler (ChuckNorris quote est interdit) et
+qui possèdent un /random de préférence ou à défaut un random fait de votre
+côté.
+Stocker les valeurs de l’API dans une table dans la base de données (Lib :ROOM
+)
+Au moment de l'insertion en base de donnée, vous devez récupérer le
+current_timestamp et l’ajouter à votre objet dans room. (Api :
+System.currentTimeMillis). L’idée est d’avoir une idée de quand vous avez inséré
+votre donné en base de données.
+La liste doit contenir
+- Un Header (Libre à vous de définir le critère, mais comme vous avez la date
+d'insertion avec le prérequis de la ligne du dessus, vous pouvez regrouper par
+heure / jours par exemple).
+- Un Footer (Libre à vous de définir le critère).
+2 boutons devront être implémenter
+○
+Ajouter, qui fait un appel un random de l’API
+○
+Supprimer tout, qui vide toute la table qui a le contenu de l’API
+Le contenu attendu des items doit être le plus fourni possible (c'est-à-dire
+afficher le plus de champ disponible via le json de l’API, plus vous aurez de
+données, mieux ce sera pour la notation).
+Respecter les 2 layers vu en cours : UI & Data, avec les mappage des objets
+modèles aux bons moments. (C’est à dire entre l’objet BDD et l’objet de la vue
+par exemple).
+Au clic d’un item, vous devez afficher le détails de l’item dans un nouveau screen
+compose. Faites donc attention à bien ajouter une entrée dans la navigation.
+●
+●
+●
+Fonctionnalité 3 : Firebase
+Mettre en place firebase messaging afin de recevoir une notification
+Mettre en place un remote config qui permet de changer l’interface graphique
+d’un screen dédié à firebase. Le screen peut-être simple en contenu mais il doit
+afficher un changement rapidement visible.
+Le cours présente une implémentation de Firebase (Data) mais utilise les
+résultats directement dans l’UI. Ce n’est pas une bonne approche pour
+l’architecture ‘clean’
+. Il manque les modèles du repository, un repository et l’UI. A
+vous de proposer une solution avec une architecture que vous savez expliquer et
+qui répond à cette contrainte. Le plus gros des points se situe ici. Mais c’est
+également le point le plus compliqué.
+Bon courage !

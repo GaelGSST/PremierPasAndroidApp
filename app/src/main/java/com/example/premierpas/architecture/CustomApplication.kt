@@ -3,7 +3,6 @@ package com.example.premierpas.architecture
 import android.app.Application
 import androidx.room.Room
 import com.example.premierpas.data.local.CustomRoomDatabase
-import firebase.RemoteConfigManager
 
 class CustomApplication : Application() {
     companion object {
@@ -22,6 +21,5 @@ class CustomApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        RemoteConfigManager.init()
     }
 }

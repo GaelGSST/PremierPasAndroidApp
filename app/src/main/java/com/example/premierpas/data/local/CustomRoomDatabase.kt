@@ -2,18 +2,18 @@ package com.example.premierpas.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.premierpas.data.local.dao.AndroidVersionDao
-import com.example.premierpas.data.local.model.AndroidVersionEntity
+import com.example.premierpas.data.local.dao.ExtinctAnimalDao
+import com.example.premierpas.data.local.model.ExtinctAnimalEntity
 
 @Database(
     entities = [
-        AndroidVersionEntity::class
+        ExtinctAnimalEntity::class
     ],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 
 abstract class CustomRoomDatabase : RoomDatabase() {
-    abstract fun androidVersionDao(): AndroidVersionDao
+    abstract fun extinctAnimalDao(): ExtinctAnimalDao
 }
 

@@ -9,8 +9,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
+import com.example.premierpas.ui.screen.AnimalDetailScreen
+import com.example.premierpas.ui.screen.AnimalListScreen
+import com.example.premierpas.ui.screen.FirebaseConfigScreen
 import com.example.premierpas.ui.screen.MainScreen
-import com.example.premierpas.ui.screen.SecondScreen
 
 @Composable
 fun ApplicationNavHost(
@@ -54,12 +57,35 @@ fun ApplicationNavHost(
     ) {
         composable<ApplicationNavigationPath.Home> {
             MainScreen(
-                onButtonClick = { navController.navigate(route = ApplicationNavigationPath.Second) }
+                onNavigateToAnimalList = { navController.navigate(route = ApplicationNavigationPath.AnimalList) },
+                onNavigateToFirebase = { navController.navigate(route = ApplicationNavigationPath.FirebaseConfig) }
             )
         }
 
-        composable<ApplicationNavigationPath.Second> {
-            SecondScreen(navigateBack = { navController.popBackStack() })
+        composable<ApplicationNavigationPath.AnimalList> {
+            AnimalListScreen(
+                navigateBack = { navController.popBackStack() },
+                onNavigateToDetail = { detail -> navController.navigate(detail) }
+            )
+        }
+
+        composable<ApplicationNavigationPath.FirebaseConfig> {
+            FirebaseConfigScreen(navigateBack = { navController.popBackStack() })
+        }
+
+        composable<ApplicationNavigationPath.AnimalDetail> { backStackEntry ->
+            val args = backStackEntry.toRoute<ApplicationNavigationPath.AnimalDetail>()
+            AnimalDetailScreen(
+                animalId = args.id,
+                binomialName = args.binomialName,
+                commonName = args.commonName,
+                location = args.location,
+                wikiLink = args.wikiLink,
+                lastRecord = args.lastRecord,
+                imageSrc = args.imageSrc,
+                shortDesc = args.shortDesc,
+                navigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
@@ -69,5 +95,20 @@ object ApplicationNavigationPath {
     data object Home
 
     @Serializable
-    data object Second
+    data object AnimalList
+
+    @Serializable
+    data object FirebaseConfig
+
+    @Serializable
+    data class AnimalDetail(
+        val id: Long,
+        val binomialName: String,
+        val commonName: String,
+        val location: String,
+        val wikiLink: String,
+        val lastRecord: String,
+        val imageSrc: String,
+        val shortDesc: String
+    )
 }
