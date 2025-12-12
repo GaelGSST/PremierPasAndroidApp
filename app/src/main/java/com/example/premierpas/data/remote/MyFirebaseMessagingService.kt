@@ -1,10 +1,10 @@
-package firebase.data
+package com.example.premierpas.data.remote
 
+import android.R
 import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.util.Log
@@ -41,7 +41,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }
         val channelId = "myNotificationChannel"
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(android.R.drawable.ic_menu_gallery)
+            .setSmallIcon(R.drawable.ic_menu_gallery)
             .setContentTitle(remoteMessageNotification.title)
             .setContentText(remoteMessageNotification.body)
             .setAutoCancel(true)
@@ -56,7 +56,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             )
 
         val notificationManager =
-            this.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            this.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
 
 
         // Since android Oreo notification channel is needed.
